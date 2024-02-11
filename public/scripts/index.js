@@ -1,3 +1,4 @@
+// Create the variables
 let noteForm;
 let noteTitle;
 let noteText;
@@ -6,6 +7,7 @@ let newNoteBtn;
 let clearBtn;
 let noteList;
 
+// if we are on that path (/notes) so it will run all those methods. 
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
@@ -29,6 +31,8 @@ const hide = (elem) => {
 let activeNote = {};
 hide(saveNoteBtn);
 hide(clearBtn);
+
+// will get all the notes
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -42,6 +46,7 @@ const getNotes = () =>
       console.error('Error:', error);
     });
 
+// will save a note
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -51,14 +56,11 @@ const saveNote = (note) =>
     body: JSON.stringify(note)
   })
   .then((response) => response.json())
-    .then((data) => {
-      alert(data);
-      // createCard(note);
-    })
     .catch((error) => {
       console.error('Error:', error);
     });
 
+// will delete a note with an specific id
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -67,6 +69,7 @@ const deleteNote = (id) =>
     }
   });
 
+// will render the active note, in other words the one that we click.
 const renderActiveNote = () => {
   hide(saveNoteBtn);
   hide(clearBtn);
@@ -86,6 +89,7 @@ const renderActiveNote = () => {
   }
 };
 
+// this is the function to save a note
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
@@ -101,11 +105,11 @@ const handleNoteSave = () => {
 const handleNoteDelete = (e) => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
-
   const note = e.target;
+  
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).note_id;
-
-  if (activeNote.id === noteId) {
+  console.log(noteId);
+  if (activeNote === noteId) {
     activeNote = {};
   }
 
@@ -165,6 +169,7 @@ const renderNoteList = async (notes) => {
     liEl.append(spanEl);
 
     if (delBtn) {
+      // we create the delete button with an emoji
       const delBtnEl = document.createElement('i');
       delBtnEl.classList.add(
         'fas',
@@ -209,4 +214,5 @@ if (window.location.pathname === '/notes') {
   noteForm.addEventListener('input', handleRenderBtns);
 }
 
+// we call the getAndRenderNotes so as soon as we open this page, it will show all the saved notes.
 getAndRenderNotes();
