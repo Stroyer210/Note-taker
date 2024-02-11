@@ -5,11 +5,6 @@
         "note_id": "3fe5d166-2f9e-4e3d-87a7-25a561207c6c"
     },
     {
-        "title": "sergio hello",
-        "text": "hellowwww",
-        "note_id": "582f"
-    },
-    {
         "title": "Dinner out",
         "text": "Tonight",
         "note_id": "1080"
@@ -18,5 +13,15 @@
         "title": "Go for a walk",
         "text": "tomorrow",
         "note_id": "dd25"
+    },
+    {
+        "title": "Visit my uncle",
+        "text": "this friday",
+        "note_id": "585a"
+    },
+    {
+        "title": "Buy a new car",
+        "text": "This week",
+        "note_id": "7d39"
     }
 ]
