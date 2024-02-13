@@ -10,7 +10,7 @@ Creating NoteMaster was a total challenge for the reason that I wasn't really su
 
 You are able to check this app by two ways:
 
- 1. If you want to check my app, you can go to this URL: 
+ 1. If you want to check my app, you can go to this URL: https://boiling-taiga-78270-504583e05a2e.herokuapp.com/ 
  2. If you want to try it yourself, you have to have "Node.js" installed in your computer, then you have to clone my repository and run it locally.
 
 ## Usage :bar_chart:
